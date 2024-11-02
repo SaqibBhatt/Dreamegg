@@ -1,3 +1,4 @@
+// Pagenavbar.js
 import React from 'react';
 import { Link } from "react-router-dom";
 import { Row, Col, Input } from "antd";
@@ -13,21 +14,21 @@ const Pagenavbar = () => {
             <NavbarRow align="middle" justify="space-between">
                 <Col>
                     <NavList>
-                        <li>Adults</li>
-                        <li>Baby & Kids</li>
-                        <li>Shop All</li>
-                        <li>Contact Us</li>
-                        <li>Extend Warranty</li>
+                        <li><Link to="/">Adults</Link></li>
+                        <li><Link to="/">Baby & Kids</Link></li>
+                        <li><Link to="/">Shop All</Link></li>
+                        <li><Link to="/">Contact Us</Link></li>
+                        <li><Link to="/">Extend Warranty</Link></li>
                     </NavList>
                 </Col>
                 <Col>
-                    <LogoLink to='/' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <LogoLink to='/'>
                         <img src={Mainlogo} alt="Main-logo" />
                     </LogoLink>
                 </Col>
                 <Col>
                     <NavList>
-                        <li>How to use</li>
+                        <li><Link to="/">How to use</Link></li>
                         <li>
                             <SearchBar
                                 placeholder="Search..."
@@ -52,6 +53,7 @@ const NavbarContainer = styled.div`
     padding: 20px 50px;
     background-color: #fff;
     border-bottom: 1px solid #e8e8e8;
+    margin: 0;
 `;
 
 const NavbarRow = styled(Row)`
@@ -60,15 +62,24 @@ const NavbarRow = styled(Row)`
 
 const NavList = styled.ul`
     display: flex;
-    gap: 30px;
+    gap: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
 
     li {
         cursor: pointer;
-        font-size: 20px;
+        font-size: 16px;
+        font-weight: 500;
         color: #595959;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            &:hover {
+                color: #ff7f50;
+            }
+        }
     }
 
     .icon {
@@ -79,8 +90,12 @@ const NavList = styled.ul`
 `;
 
 const LogoLink = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     img {
-        height: 80px;  /* Adjust height to make it bigger */
+        height: 60px;  /* Adjust height to make it bigger */
         max-width: 100%; /* Ensure responsiveness */
     }
 `;

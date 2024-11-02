@@ -1,18 +1,41 @@
+/* Reset default browser styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure no extra space around the body and root container */
+body, .App {
+  margin: 0;
+  padding: 0;
+}
+
+/* Main App container styling */
 .App {
   text-align: center;
 }
 
+/* Navbar and main content sections with no additional margin or padding */
+.Pagenavbar, .MainPage {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Styling for the app logo */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/* Animation for logo if reduced motion is not preferred */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Header styling */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,10 +47,12 @@
   color: white;
 }
 
+/* Link color */
 .App-link {
   color: #61dafb;
 }
 
+/* Keyframes for logo spin animation */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
