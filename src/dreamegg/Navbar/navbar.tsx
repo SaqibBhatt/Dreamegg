@@ -37,7 +37,7 @@ const Pagenavbar = () => {
                             />
                         </li>
                         <li><ShoppingCartOutlined className="icon" /></li>
-                        {/* <li><User Outlined className="icon" /></li> */}
+                        <li><UserOutlined className="icon" /></li>
                     </NavList>
                 </Col>
             </NavbarRow>
