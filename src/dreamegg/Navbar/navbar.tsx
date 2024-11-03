@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Row, Col, Input } from "antd";
 import { SearchOutlined, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-import Mainlogo from '../img/main-logo.jpg';
+// import Mainlogo from '../img/main-logo.jpg';
 import styled from 'styled-components';
 
 const { Search } = Input;
@@ -23,7 +23,7 @@ const Pagenavbar = () => {
                 </Col>
                 <Col>
                     <LogoLink to='/'>
-                        <img src={Mainlogo} alt="Main-logo" />
+                        <img src='https://dreamegg.com/cdn/shop/files/main-logo.png?v=1713259267&width=323' alt="Main-logo" />
                     </LogoLink>
                 </Col>
                 <Col>
@@ -95,7 +95,7 @@ const LogoLink = styled(Link)`
     align-items: center;
 
     img {
-        height: 60px;  /* Adjust height to make it bigger */
+        height: 50px;  /* Adjust height to make it bigger */
         max-width: 100%; /* Ensure responsiveness */
     }
 `;

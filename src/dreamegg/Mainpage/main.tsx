@@ -1,11 +1,25 @@
-// MainPage.js
-import React from "react";
-import { Button, Row, Col } from "antd";
+import { useState } from "react";
+import { Button, Row, Col, Modal } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ProductImage from "../img/main-page.jpg"; // Replace with the actual path to your image
+import ProductImage from "../img/main-page.jpg";
+import { VscTriangleRight } from "react-icons/vsc";
+import ReactPlayer from "react-player"; // Import ReactPlayer
 
 const MainPage = () => {
+    // State for modal visibility
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    // Function to open the modal
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    // Function to close the modal
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
+
     return (
         <MainContainer>
             <Overlay>
@@ -17,15 +31,36 @@ const MainPage = () => {
                                 Wake up refreshed with Dreamegg Sunrise 1 – the gentle way to start your day. Customize your sleep routine with soothing sounds, a simulated sunrise, and a dimmable night light for a perfect night’s rest.
                             </p>
                             <ButtonContainer>
-                                <StyledButton type="primary">
+                                <ShopNowButton>
                                     <Link to="/">Shop Now</Link>
-                                </StyledButton>
-                                <StyledButton type="default">Watch Video</StyledButton>
+                                </ShopNowButton>
+                                <WatchVideoButton onClick={showModal}>
+                                    <IconWrapper>
+                                        <VscTriangleRight />
+                                    </IconWrapper>
+                                    Watch Video
+                                </WatchVideoButton>
                             </ButtonContainer>
                         </TextContent>
                     </Col>
                 </Row>
             </Overlay>
+
+            <Modal
+                title="Sleepless Night?"
+                visible={isModalVisible}
+                onCancel={handleCancel}
+                footer={null}
+                centered
+                width={800}
+                bodyStyle={{ padding: 0 }} // Optional adjustment if needed
+            >
+                <ReactPlayer
+                    url="https://www.youtube.com/watch?v=J2Lv0UZ4vbs" // Ensure full URL
+                    width="100%"
+                    controls={true}
+                />
+            </Modal>
         </MainContainer>
     );
 };
@@ -34,28 +69,25 @@ export default MainPage;
 
 // Styled components
 const MainContainer = styled.div`
-    margin: 0; /* Remove any margin */
-    padding: 0; /* Remove any padding */
+    margin: 0;
+    padding: 0;
     background-image: url(${ProductImage});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: calc(100vh - 190px); /* Adjust height based on your navbar's height */
+    height: calc(100vh - 190px);
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-
-// Semi-transparent overlay for text readability
 const Overlay = styled.div`
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    border-radius: 8px;
+    padding: 10px;
     max-width: 800px;
+    position: absolute;
+    left: 150px;
 `;
 
-// Text styling
 const TextContent = styled.div`
     h1 {
         font-size: 2.5em;
@@ -70,26 +102,54 @@ const TextContent = styled.div`
     }
 `;
 
-// Button container with spacing
 const ButtonContainer = styled.div`
     display: flex;
     gap: 15px;
 `;
 
-// Styled button with specific colors
-const StyledButton = styled(Button)`
-    &.ant-btn-primary {
-        background-color: #ff7f50;
-        border-color: #ff7f50;
-        font-size: 16px;
+const ShopNowButton = styled(Button)`
+    background-color: #ff7f50;
+    border: 2px solid #ff7f50;
+    color: white;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 25px;
+
+    &:hover {
+        background-color: #e67e22 !important;
+        border: 2px solid #e67e22 !important;
+        color: white !important;
     }
-    &.ant-btn-default {
-        border-color: #ff7f50;
-        color: #ff7f50;
-        font-size: 16px;
-    }
+
     a {
         color: inherit;
         text-decoration: none;
     }
+`;
+
+const WatchVideoButton = styled(Button)`
+    background-color: transparent;
+    border: 2px dotted #ff7f50;
+    color: black;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background-color: transparent !important;
+        border: 2px dotted #ff7f50 !important;
+        color: black !important;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+`;
+
+const IconWrapper = styled.span`
+    color: #ff7f50;
+    margin-right: 8px;
 `;
