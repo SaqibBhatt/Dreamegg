@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import { Button, Row, Col, Modal } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ProductImage from "../img/main-page.jpg";
 import { VscTriangleRight } from "react-icons/vsc";
-import ReactPlayer from "react-player"; // Import ReactPlayer
+import ReactPlayer from "react-player";
 
 const MainPage = () => {
     // State for modal visibility
@@ -45,7 +45,6 @@ const MainPage = () => {
                     </Col>
                 </Row>
             </Overlay>
-
             <Modal
                 title="Sleepless Night?"
                 visible={isModalVisible}
@@ -61,6 +60,14 @@ const MainPage = () => {
                     controls={true}
                 />
             </Modal>
+
+            {/* Additional Section */}
+            <AdditionalSection>
+                <InnerContainer>
+                    <h2>Get Better Sleep</h2>
+                    <div></div>
+                </InnerContainer>
+            </AdditionalSection>
         </MainContainer>
     );
 };
@@ -75,17 +82,20 @@ const MainContainer = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: calc(100vh - 190px);
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    flex-direction: column; /* Allows stacking of Overlay and AdditionalSection */
 `;
 
 const Overlay = styled.div`
-    padding: 10px;
     max-width: 800px;
-    position: absolute;
-    left: 150px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+    border-radius: 10px;
+    margin-bottom: 20px;
 `;
 
 const TextContent = styled.div`
@@ -112,7 +122,7 @@ const ShopNowButton = styled(Button)`
     border: 2px solid #ff7f50;
     color: white;
     font-size: 20px;
-    padding: 20px 30px;
+    padding: 10px 20px;
     border-radius: 25px;
 
     &:hover {
@@ -132,14 +142,14 @@ const WatchVideoButton = styled(Button)`
     border: 2px dotted #ff7f50;
     color: black;
     font-size: 20px;
-    padding: 20px 30px;
+    padding: 10px 20px;
     border-radius: 25px;
     display: flex;
     align-items: center;
 
     &:hover {
         background-color: transparent !important;
-        border: 2px dotted #ff7f50 !important;
+        border: 2px dotted #e67e22 !important;
         color: black !important;
     }
 
@@ -152,4 +162,31 @@ const WatchVideoButton = styled(Button)`
 const IconWrapper = styled.span`
     color: #ff7f50;
     margin-right: 8px;
+`;
+
+// Additional section styled components
+const AdditionalSection = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Background for readability */
+    padding: 20px 0;
+    margin-top: 20px;
+`;
+
+const InnerContainer = styled.div`
+    text-align: center;
+
+    h2 {
+        font-size: 2em;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    div {
+        width: 50px;
+        height: 2px;
+        background-color: #333;
+        margin: 0 auto; /* Center the div */
+    }
 `;
