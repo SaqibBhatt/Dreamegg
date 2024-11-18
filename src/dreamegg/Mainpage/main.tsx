@@ -1,245 +1,273 @@
+// Import necessary modules
 import { useState } from "react";
-import { Button } from "antd";
+import { Button, Row, Col, Modal } from "antd";
 import { Link } from "react-router-dom";
+import { VscTriangleRight } from "react-icons/vsc";
 import ReactPlayer from "react-player";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import FeatureIcon1 from "../img/icon1.png"; // Placeholder paths for icons
+import FeatureIcon2 from "../img/icon2.png";
+import FeatureIcon3 from "../img/icon3.png";
+import FeatureIcon4 from "../img/icon4.png";
 import ProductImage from "../img/main-page.jpg";
 
 // MainPage component
 const MainPage = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-    // Function to open the modal
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
-    // Function to close the modal
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
-    return (
-        <Container>
-            {/* Rest Well Section */}
-            <Section className="rest-well">
-                <BackgroundImage>
-                    <TextContent>
-                        <h2>Rest Well</h2>
-                        <p>
-                            Wake up refreshed with Dreamegg Sunrise 1 – the gentle way to start
-                            your day. Customize your sleep routine with soothing sounds, a
-                            simulated sunrise, and a dimmable night light for a perfect night’s
-                            rest.
-                        </p>
-                        <ButtonContainer>
-                            <StyledButton>
-                                <Link to="/">Shop Now</Link>
-                            </StyledButton>
-                            <StyledButton onClick={showModal}>
-                                Watch Video
-                            </StyledButton>
-                        </ButtonContainer>
-                    </TextContent>
-                </BackgroundImage>
-                {/* Video Modal */}
-                {isModalVisible && (
-                    <ModalOverlay>
-                        <ModalContent>
-                            <ReactPlayer
-                                url="https://www.youtube.com/watch?v=J2Lv0UZ4vbs&t=1s"
-                                controls
-                            />
-                            <CloseButton onClick={handleCancel}>Close</CloseButton>
-                        </ModalContent>
-                    </ModalOverlay>
-                )}
-            </Section>
-            {/* Get Better Sleep Section */}
-            <Section className="get-better-sleep">
-                <h2>Get Better Sleep</h2>
-                <ProductList>
-                    <ProductCard>
-                        <img src={ProductImage} alt="Sunrise 1" />
-                        <p>For Adults</p>
-                        <h3>
-                            <Link to="/">Sunrise 1</Link>
-                        </h3>
-                        <Rating>
-                            <span>★★★★☆</span>
-                            <span>1 review</span>
-                        </Rating>
-                        <Price>
-                            $89.99 <del>$99.99</del>
-                        </Price>
-                        <StyledButton>
-                            <a href="/">Shop Now</a>
-                        </StyledButton>
-                    </ProductCard>
-                    <ProductCard>
-                        <img src={ProductImage} alt="Speed Lite 1" />
-                        <p>For Kids</p>
-                        <h3>
-                            <Link to="/">Speed Lite 1</Link>
-                        </h3>
-                        <Rating>
-                            <span>★★★★☆</span>
-                            <span>30 reviews</span>
-                        </Rating>
-                        <Price>
-                            $35.99
-                        </Price>
-                        <StyledButton>
-                            <a href="/">Shop Now</a>
-                        </StyledButton>
-                    </ProductCard>
-                    <ProductCard>
-                        <img src={ProductImage} alt="Sleep Lite D11 Max" />
-                        <p>For Kids</p>
-                        <h3>
-                            <Link to="/">Sleep Lite D11 Max</Link>
-                        </h3>
-                        <Rating>
-                            <span>★★★★☆</span>
-                            <span>329 reviews</span>
-                        </Rating>
-                        <Price>
-                            $39.99
-                        </Price>
-                        <StyledButton>
-                            <a href="/">Shop Now</a>
-                        </StyledButton>
-                    </ProductCard>
-                    <ProductCard>
-                        <img src={ProductImage} alt="Sleep Lite D11" />
-                        <p>For Kids</p>
-                        <h3>
-                            <Link to="/">Speed Lite D11</Link>
-                        </h3>
-                        <Rating>
-                            <span>★★★★☆</span>
-                            <span>75 reviews</span>
-                        </Rating>
-                        <Price>
-                            $35.99
-                        </Price>
-                        <StyledButton>
-                            <a href="/">Shop Now</a>
-                        </StyledButton>
-                    </ProductCard>
-                </ProductList>;
-                <StyledButton>
-                    <a href="/">View All</a>
-                </StyledButton>
-            </Section>
+  return (
+    <>
+      <MainContainer isModalVisible={isModalVisible}>
+        <Overlay>
+          <Row gutter={16} align="middle">
+            <Col xs={24} md={12}>
+              <TextContent>
+                <h1>Rest Well</h1>
+                <p>
+                  Wake up refreshed with Dreamegg Sunrise 1 – the gentle way to
+                  start your day. Customize your sleep routine with soothing
+                  sounds, a simulated sunrise, and a dimmable night light for a
+                  perfect night’s rest.
+                </p>
+                <ButtonContainer>
+                  <StyledButton>
+                    <Link to="/">Shop Now</Link>
+                  </StyledButton>
+                  <StyledButton onClick={showModal}>
+                    <IconWrapper>
+                      <VscTriangleRight />
+                    </IconWrapper>
+                    Watch Video
+                  </StyledButton>
+                </ButtonContainer>
+              </TextContent>
+            </Col>
+          </Row>
+        </Overlay>
 
-            {/* Dreamegg Sleep Lite Section */}
-            <Section className="dreamegg-sleep">
-                <h2>Dreamegg Sleep Lite D11 Max</h2>
-                <p>Best Seller</p>
-                <ProductFeatures>
-                    {[
-                        "21 Soothing Sounds",
-                        "30-Hours Continuous Looping",
-                        "Portable and Fit in Diaper Bag",
-                        "USB C + 1800mah Battery",
-                    ].map((feature, idx) => (
-                        <Feature key={idx}>
-                            <img src="" alt="" />
-                            <h3>{feature}</h3>
-                        </Feature>
-                    ))}
-                </ProductFeatures>
-                <StyledButton>
-                    <a href="/">Shop Now</a>
-                </StyledButton>
-            </Section>
+        <Modal
+          title="Sleepless Night?"
+          open={isModalVisible}
+          onCancel={handleCancel}
+          footer={null}
+          centered
+          width={800}
+          bodyStyle={{
+            padding: "0",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=J2Lv0UZ4vbs&t=1s"
+            width="100%"
+            controls
+          />
+        </Modal>
+      </MainContainer>
+      {/* second */}
+      <Section>
+        <h2>Get Better Sleep</h2>
+        <Underline />
+        <ProductList>
+          <ProductCard>
+            <ProductImageWrapper>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/D26_1_5a975e1a-c382-4df8-bf16-a1a15804f6aa.jpg?v=1722411667&width=360"
+                alt="Sunrise 1"
+              />
+            </ProductImageWrapper>
+            <p>For Adults</p>
+            <h3>
+              <StyledLink to="/">Sunrise 1</StyledLink>
+            </h3>
+            <Rating>
+              <span>★★★★★</span>
+              <span>1 review</span>
+            </Rating>
+            <Price>$89.99</Price>
+            <ShopButton>
+              <a href="/">Shop Now</a>
+            </ShopButton>
+          </ProductCard>
+          <ProductCard>
+            <ProductImageWrapper>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/Sleep_lite_1_2_a11eecfb-acde-43c3-884e-2fc189acab71.png?v=1722251597&width=360"
+                alt="Sunrise 1"
+              />
+            </ProductImageWrapper>
+            <p>For Kids</p>
+            <h3>
+              <StyledLink to="/">Sleep Lite 1</StyledLink>
+            </h3>
+            <Rating>
+              <span>★★★★★</span>
+              <span>30 review</span>
+            </Rating>
+            <Price>$35.99</Price>
+            <ShopButton>
+              <a href="/">Shop Now</a>
+            </ShopButton>
+          </ProductCard>
+          <ProductCard>
+            <ProductImageWrapper>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/1_0dc67118-c27e-4327-bd56-27c762d6ecd2.png?v=1716888254&width=360"
+                alt="Sunrise 1"
+              />
+            </ProductImageWrapper>
+            <p>For Kids</p>
+            <h3>
+              <StyledLink to="/">Speed Lite D11 Max</StyledLink>
+            </h3>
+            <Rating>
+              <span>★★★★★</span>
+              <span>329 review</span>
+            </Rating>
+            <Price>$39.99</Price>
+            <ShopButton>
+              <a href="/">Shop Now</a>
+            </ShopButton>
+          </ProductCard>
+          <ProductCard>
+            <ProductImageWrapper>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/2_e2b584e5-796a-4c18-b7fb-cd67114f7074.png?v=1716802069&width=360"
+                alt="Sunrise 1"
+              />
+            </ProductImageWrapper>
+            <p>For Kids</p>
+            <h3>
+              <StyledLink to="/">Sleep Lite D11</StyledLink>
+            </h3>
+            <Rating>
+              <span>★★★★★</span>
+              <span>75 review</span>
+            </Rating>
+            <Price>$35.99</Price>
+            <ShopButton>
+              <a href="/">Shop Now</a>
+            </ShopButton>
+          </ProductCard>
+        </ProductList>
+        <ViewAllButton><a href="/">View All</a></ViewAllButton>
+      </Section>
 
-            {/* Testimonial Section */}
-            <Section className="testimonial">
-                <blockquote>
-                    “Dreamegg sound machines are your dream machines to enhance your sleep
-                    experience. Since 2016, we have helped over five million happy
-                    customers (and most of them are babies) sleep well with sweet dreams
-                    every night."
-                </blockquote>
-                <Author>- Robin Sunny, Product Manager</Author>
-            </Section>
-
-            {/* Popular Products Section */}
-            <Section className="popular-product">
-                <h2>Popular Product</h2>
-                <PopularProducts>
-                    {["Sunrise 1", "Sleep Lite 1"].map((product, idx) => (
-                        <ProductCard key={idx}>
-                            <h3>{product}</h3>
-                            <ul>
-                                <li>Alarm Clock</li>
-                                <li>Nine Night Light</li>
-                                <li>24 HiFi & Non-Looping Sounds</li>
-                                <li>29 Soothing Sounds</li>
-                            </ul>
-                            <Price>$35.99</Price>
-                            <StyledButton>
-                                <Link to="/">Shop Now</Link>
-                            </StyledButton>
-                        </ProductCard>
-                    ))}
-                </PopularProducts>
-            </Section>
-
-            {/* Love Dreamegg Section */}
-            <Section className="love-dreamegg">
-                <h2>Experts and Customers Love Dreamegg</h2>
-                <ImageGrid>
-                    {[...Array(6)].map((_, idx) => (
-                        <ImageWrapper key={idx}>
-                            <img src="" alt="" />
-                        </ImageWrapper>
-                    ))}
-                </ImageGrid>
-            </Section>
-        </Container>
-    );
+      <Section className="dreamegg-sleep">
+        <Content>
+          <TextSection>
+            <p className="tagline">Best Seller</p>
+            <h2>Dreamegg Sleep Lite D11 Max</h2>
+            <Underline />
+            <ProductFeatures>
+              <Feature>
+                <img
+                  src="https://dreamegg.com/cdn/shop/files/SUNRISE1_4.png?v=1722249917&width=713"
+                  alt="Soothing Sounds Icon"
+                />
+                <h3>21 Soothing Sounds</h3>
+              </Feature>
+              <Feature>
+                <img
+                  src="https://dreamegg.com/cdn/shop/files/Frame_2.svg?v=1713338287&width=750"
+                  alt="Continuous Looping Icon"
+                />
+                <h3>30-Hours Continuous Looping</h3>
+              </Feature>
+              <Feature>
+                <img
+                  src="https://dreamegg.com/cdn/shop/files/Frame_3.svg?v=1713338308&width=750"
+                  alt="Portable Icon"
+                />
+                <h3>Portable and Fit in Diaper Bag</h3>
+              </Feature>
+              <Feature>
+                <img
+                  src="https://dreamegg.com/cdn/shop/files/Frame_4.svg?v=1713338321&width=750"
+                  alt="Battery Icon"
+                />
+                <h3>USB C + 1800mah Battery</h3>
+              </Feature>
+            </ProductFeatures>
+            <StyledButton>
+              <a href="/">Shop Now</a>
+            </StyledButton>
+          </TextSection>
+          <ImageSection>
+            <img
+              src="https://dreamegg.com/cdn/shop/files/D11_MAX_2.jpg?v=1717408963&width=750"
+              alt="Dreamegg Sleep Lite D11 Max"
+            />
+          </ImageSection>
+        </Content>
+      </Section>
+    </>
+  );
 };
 
 export default MainPage;
 
-// Styled Components
-const Container = styled.div`
-  padding: 0;
-`;
-const Section = styled.section`
+// Styled components
+interface MainContainerProps {
+  isModalVisible: boolean;
+}
+
+const MainContainer = styled.div<MainContainerProps>`
   margin: 0;
-`;
-const BackgroundImage = styled.div`
+  padding: 0;
   background-image: url(${ProductImage});
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  height: calc(100vh - 195px);
+  height: calc(100vh - 190px);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding 
+
+  ${({ isModalVisible }) =>
+    isModalVisible &&
+    css`
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+    `}
+`;
+
+const Overlay = styled.div`
+  padding: 20px;
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
 `;
 
 const TextContent = styled.div`
-  color: #333;
-  text-align: center;
-  max-width: 600px;
-
-  h2 {
+  h1 {
     font-size: 2.5em;
-    margin-bottom: 0.5em;
     font-weight: bold;
+    color: #333;
   }
 
   p {
-    font-size: 1.2em;
-    margin: 0.5em 0;
-    line-height: 1.5;
+    font-size: 1.1em;
+    color: #595959;
+    line-height: 1.6;
+    margin-bottom: 20px;
   }
 `;
 
@@ -248,113 +276,12 @@ const ButtonContainer = styled.div`
   gap: 15px;
 `;
 
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-`;
-const ModalContent = styled.div`
-  background: white;
-  padding: 20px;
-  width: 80%;
-  max-width: 600px;
-`;
-const CloseButton = styled.button`
-  background: #ff7f50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    background: #e67e22;
-  }
-`;
-
-const ProductList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 0;
-  margin: 20px 0;
-  list-style: none;
-`;
-
-const ProductCard = styled.li`
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    margin: 10px 0;
-    color: #666;
-    font-size: 0.9em;
-  }
-
-  h3 {
-    margin: 10px 0;
-    font-size: 1.2em;
-    color: #333;
-  }
-`;
-
-const Rating = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  margin: 8px 0;
-
-  span:first-child {
-    color: #ffb400;
-    font-size: 1.2em;
-  }
-
-  span:last-child {
-    color: #888;
-    font-size: 0.9em;
-  }
-`;
-
-const Price = styled.div`
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #ff7f50;
-  margin: 10px 0;
-
-  del {
-    color: #aaa;
-    font-size: 0.9em;
-    margin-left: 5px;
-  }
-`;
-
 const StyledButton = styled(Button)`
+  padding: 10px 20px;
   background-color: #ff7f50;
   color: white;
   border-radius: 20px;
   border: none;
-  padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
@@ -368,36 +295,175 @@ const StyledButton = styled(Button)`
     color: inherit;
   }
 `;
+
+const IconWrapper = styled.div`
+  font-size: 1.2em;
+  margin-right: 5px;
+`;
+
+const StyledLink = styled(Link)`
+  font-weight: bold;
+  font-size: 0.8em; /* Adjust text size to medium (approx. 19px if 1em = 16px) */
+  color: black;
+  text-decoration: none; /* Remove default underline */
+
+  &:hover {
+    text-decoration: underline; /* Add underline on hover */
+    text-decoration-color: black; /* Ensure the underline is black */
+  }
+`;
+
+
+const Section = styled.section`
+  text-align: center;
+  padding: 20px;
+`;
+
+const Underline = styled.div`
+  width: 150px;
+  height: 3px;
+  background-color: #f69059;
+  margin: 0 auto 30px auto;
+`;
+
+const ProductList = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+`;
+
+const ProductCard = styled.div`
+  background: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: left;
+  width: 250px;
+`;
+
+const ProductImageWrapper = styled.div`
+  background-color: #fcf4eb;
+  padding: 15px;
+  border-radius: 30px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
+
+const Rating = styled.div`
+  font-size: 0.9em;
+  color: #f9b233;
+  margin: 10px 0;
+`;
+
+const Price = styled.div`
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+
+  del {
+    color: #999;
+  }
+`;
+
+const ShopButton = styled.button`
+  display: block;
+  margin: 10px auto;
+  padding: 8px 75px;
+  background-color: #f69059;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1em;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  &:hover {
+    background-color: #e07a45;
+  }
+`;
+
+const ViewAllButton = styled.button`
+  display: block;
+  margin: 0 auto;
+  padding: 10px 50px;
+  background: transparent;
+  color: black;
+  border: 3px solid orange;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1em;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
+`;
+
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px;
+`;
+
+const TextSection = styled.div`
+  flex: 1;
+
+  .tagline {
+    font-size: 0.9em;
+    color: #ff7f50;
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    font-size: 2em;
+    color: #333;
+  }
+`;
+
 const ProductFeatures = styled.div`
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
-`;
-const Feature = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const Author = styled.p`
-  font-style: italic;
-  color: #888;
-`;
-const PopularProducts = styled.div`
-  display: flex;
   gap: 20px;
 `;
-const ImageGrid = styled.div`
+
+const Feature = styled.div`
+  flex: 1 1 45%;
   display: flex;
+  align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+
+  img {
+    width: 40px;
+  }
+
+  h3 {
+    font-size: 1em;
+    font-weight: 500;
+  }
 `;
-const ImageWrapper = styled.div`
-  width: 100px;
-  height: 100px;
-  background: #f5f5f5;
+
+const ImageSection = styled.div`
+  flex: 1;
+
   img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    border-radius: 15px;
   }
 `;
