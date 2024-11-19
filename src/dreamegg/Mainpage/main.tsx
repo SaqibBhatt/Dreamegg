@@ -75,7 +75,9 @@ const MainPage = () => {
       </MainContainer>
       {/* second */}
       <Section>
-        <h2>Get Better Sleep</h2>
+        <Title>
+          <h2>Get Better Sleep</h2>
+        </Title>
         <Underline />
         <ProductList>
           <ProductCard>
@@ -162,54 +164,53 @@ const MainPage = () => {
         <ViewAllButton><a href="/">View All</a></ViewAllButton>
       </Section>
 
-      <Section className="dreamegg-sleep">
-        <Content>
-          <TextSection>
-            <p className="tagline">Best Seller</p>
-            <h2>Dreamegg Sleep Lite D11 Max</h2>
-            <Underline />
-            <ProductFeatures>
-              <Feature>
-                <img
-                  src="https://dreamegg.com/cdn/shop/files/SUNRISE1_4.png?v=1722249917&width=713"
-                  alt="Soothing Sounds Icon"
-                />
-                <h3>21 Soothing Sounds</h3>
-              </Feature>
-              <Feature>
-                <img
-                  src="https://dreamegg.com/cdn/shop/files/Frame_2.svg?v=1713338287&width=750"
-                  alt="Continuous Looping Icon"
-                />
-                <h3>30-Hours Continuous Looping</h3>
-              </Feature>
-              <Feature>
-                <img
-                  src="https://dreamegg.com/cdn/shop/files/Frame_3.svg?v=1713338308&width=750"
-                  alt="Portable Icon"
-                />
-                <h3>Portable and Fit in Diaper Bag</h3>
-              </Feature>
-              <Feature>
-                <img
-                  src="https://dreamegg.com/cdn/shop/files/Frame_4.svg?v=1713338321&width=750"
-                  alt="Battery Icon"
-                />
-                <h3>USB C + 1800mah Battery</h3>
-              </Feature>
-            </ProductFeatures>
-            <StyledButton>
-              <a href="/">Shop Now</a>
-            </StyledButton>
-          </TextSection>
-          <ImageSection>
-            <img
-              src="https://dreamegg.com/cdn/shop/files/D11_MAX_2.jpg?v=1717408963&width=750"
-              alt="Dreamegg Sleep Lite D11 Max"
-            />
-          </ImageSection>
-        </Content>
-      </Section>
+      {/* Third */}
+      <SleepSection>
+        <ContextContainer>
+          <p className="tagline">Best Seller</p>
+          <h2>Dreamegg Sleep Lite D11 Max</h2>
+          <Underline />
+          <ProductFeatures>
+            <Feature>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/SUNRISE1_4.png?v=1722249917&width=713"
+                alt="Soothing Sounds Icon"
+              />
+              <h3>21 Soothing Sounds</h3>
+            </Feature>
+            <Feature>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/Frame_2.svg?v=1713338287&width=750"
+                alt="Continuous Looping Icon"
+              />
+              <h3>30-Hours Continuous Looping and Soothing</h3>
+            </Feature>
+            <Feature>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/Frame_3.svg?v=1713338308&width=750"
+                alt="Portable Icon"
+              />
+              <h3>Portable and Fit in Diaper Bag or Backpack</h3>
+            </Feature>
+            <Feature>
+              <img
+                src="https://dreamegg.com/cdn/shop/files/Frame_4.svg?v=1713338321&width=750"
+                alt="Battery Icon"
+              />
+              <h3>USB C + 1800mah Battery Rechargeable</h3>
+            </Feature>
+          </ProductFeatures>
+          <ShopNowButton>Shop Now</ShopNowButton>
+        </ContextContainer>
+
+        <ImageContainer>
+          <img
+            src="https://dreamegg.com/cdn/shop/files/D11_MAX_2.jpg?v=1717408963&width=750"
+            alt="Dreamegg Sleep Lite D11 Max"
+          />
+        </ImageContainer>
+      </SleepSection>
+
     </>
   );
 };
@@ -316,7 +317,13 @@ const StyledLink = styled(Link)`
 
 const Section = styled.section`
   text-align: center;
-  padding: 20px;
+  padding: 100px 40px;
+`;
+
+const Title = styled.h2`
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px; /* Add more space below the title */
 `;
 
 const Underline = styled.div`
@@ -329,7 +336,7 @@ const Underline = styled.div`
 const ProductList = styled.div`
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 30px;
   flex-wrap: wrap;
   margin-bottom: 30px;
 `;
@@ -413,57 +420,102 @@ const ViewAllButton = styled.button`
   }
 `;
 
-
-const Content = styled.div`
+// Third
+const SleepSection = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 30px;
-  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 76vh;
+  background-color: #f4f4f4;
+  padding: 3rem 5%;
+  box-sizing: border-box;
+  gap: 2rem; /* Add spacing between the sections */
 `;
 
-const TextSection = styled.div`
-  flex: 1;
+const ContextContainer = styled.div`
+  flex: 1; /* Take equal space */
+  background-color: #f4f4f4;
+  padding: 2rem;
+  box-sizing: border-box;
 
   .tagline {
-    font-size: 0.9em;
-    color: #ff7f50;
-    margin-bottom: 5px;
+    color: #ff8040;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
   }
 
   h2 {
-    font-size: 2em;
-    color: #333;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 1rem;
+    line-height: 1.2;
   }
 `;
 
 const ProductFeatures = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+
+  & > div {
+    flex: 1 1 calc(50% - 1rem);
+  }
 `;
 
 const Feature = styled.div`
-  flex: 1 1 45%;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 1rem;
 
   img {
-    width: 40px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
   }
 
   h3 {
-    font-size: 1em;
-    font-weight: 500;
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
   }
 `;
 
-const ImageSection = styled.div`
-  flex: 1;
+const ShopNowButton = styled.button`
+  margin-top: 2rem;
+  padding: 12px 60px;
+  background-color: #ff8040;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e67336;
+  }
+`;
+
+const ImageContainer = styled.div`
+  flex: 1; /* Take equal space */
+  display: flex;
+  justify-content: flex-end; /* Aligns the image to the right */
+  align-items: center; /* Centers the image vertically */
+  padding-left: 2rem; /* Adds space between the content and image */
+  box-sizing: border-box;
 
   img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
+    max-width: 500px; /* Limit image width if needed */
+    border-radius: 8px;
+    object-fit: cover; /* Ensures the image covers its container proportionally */
   }
 `;
+
+
+
