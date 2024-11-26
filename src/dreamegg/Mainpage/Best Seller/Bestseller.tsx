@@ -1,59 +1,103 @@
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+
 // MainPage component
 const Betterseller = () => {
-    return (
-        <>
-            <SleepSection>
-                <ContextContainer>
-                    <p className="tagline">Best Seller</p>
-                    <h2>Dreamegg Sleep Lite D11 Max</h2>
-                    <Underline />
-                    <ProductFeatures>
-                        <Feature>
-                            <img
-                                src="https://dreamegg.com/cdn/shop/files/Frame_1.svg?v=1713338267&width=750"
-                                alt="Soothing Sounds Icon"
-                            />
-                            <h3>21 Soothing Sounds</h3>
-                        </Feature>
-                        <Feature>
-                            <img
-                                src="https://dreamegg.com/cdn/shop/files/Frame_2.svg?v=1713338287&width=750"
-                                alt="Continuous Looping Icon"
-                            />
-                            <h3>30-Hours Continuous Looping and Soothing</h3>
-                        </Feature>
-                        <Feature>
-                            <img
-                                src="https://dreamegg.com/cdn/shop/files/Frame_3.svg?v=1713338308&width=750"
-                                alt="Portable Icon"
-                            />
-                            <h3>Portable and Fit in Diaper Bag or Backpack</h3>
-                        </Feature>
-                        <Feature>
-                            <img
-                                src="https://dreamegg.com/cdn/shop/files/Frame_4.svg?v=1713338321&width=750"
-                                alt="Battery Icon"
-                            />
-                            <h3>USB C + 1800mah Battery Rechargeable</h3>
-                        </Feature>
-                    </ProductFeatures>
-                    <ShopNowButton>Shop Now</ShopNowButton>
-                </ContextContainer>
+  return (
+    <Container>
+      {/* Left Content Section */}
+      <LeftBox>
+        <p className="tagline">Best Seller</p>
+        <h2>Dreamegg Sleep Lite D11 Max</h2>
+        <Underline />
+        <Features>
+          <Feature>
+            <img
+              src="https://dreamegg.com/cdn/shop/files/Frame_1.svg?v=1713338267&width=750"
+              alt="Soothing Sounds Icon"
+            />
+            <h3>21 Soothing Sounds</h3>
+          </Feature>
+          <Feature>
+            <img
+              src="https://dreamegg.com/cdn/shop/files/Frame_2.svg?v=1713338287&width=750"
+              alt="Continuous Looping Icon"
+            />
+            <h3>30-Hours Continuous Looping and Soothing</h3>
+          </Feature>
+          <Feature>
+            <img
+              src="https://dreamegg.com/cdn/shop/files/Frame_3.svg?v=1713338308&width=750"
+              alt="Portable Icon"
+            />
+            <h3>Portable and Fit in Diaper Bag or Backpack</h3>
+          </Feature>
+          <Feature>
+            <img
+              src="https://dreamegg.com/cdn/shop/files/Frame_4.svg?v=1713338321&width=750"
+              alt="Battery Icon"
+            />
+            <h3>USB C + 1800mah Battery Rechargeable</h3>
+          </Feature>
+        </Features>
+        <ShopNowButton>Shop Now</ShopNowButton>
+      </LeftBox>
 
-                <ImageContainer>
-                    <img
-                        src="https://dreamegg.com/cdn/shop/files/D11_MAX_2.jpg?v=1717408963&width=750"
-                        alt="Dreamegg Sleep Lite D11 Max"
-                    />
-                </ImageContainer>
-            </SleepSection>
-        </>
-    );
+      {/* Right Image Section */}
+      <RightBox>
+        <img
+          src="https://dreamegg.com/cdn/shop/files/D11_MAX_2.jpg?v=1717408963&width=750"
+          alt="Dreamegg Sleep Lite D11 Max"
+        />
+      </RightBox>
+    </Container>
+  );
 };
 
 export default Betterseller;
+
+// Styled Components
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: 80vh; /* Full viewport height */
+  margin: 0; /* Remove any margin */
+  padding: 0;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;  /* Stack the sections on smaller screens */
+    height: auto;
+  }
+`;
+
+const LeftBox = styled.div`
+  flex: 1; /* Ensures both sections take equal space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align to the left */
+  padding: 2rem;
+  background-color: #f4f4f4; /* Set black background */
+  color: black; /* Text color white */
+  height: 100%; /* Ensure equal height */
+  box-sizing: border-box; /* Include padding in the width calculation */
+`;
+
+const RightBox = styled.div`
+  flex: 1; /* Ensures both sections take equal space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  height: 100%; /* Ensure equal height */
+  box-sizing: border-box;
+
+  img {
+    width: 100%; /* Ensure full width */
+    height: 100%; /* Match the height */
+    object-fit: cover; /* Cover the area without distorting the image */
+  }
+`;
 
 const Underline = styled.div`
   width: 100px;
@@ -63,54 +107,20 @@ const Underline = styled.div`
   border-radius: 3px;
 `;
 
-const SleepSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 76vh;
-  background-color: #f4f4f4;
-  padding: 3rem 5%;
-  box-sizing: border-box;
-  gap: 2rem; /* Add spacing between the sections */
-`;
-
-const ContextContainer = styled.div`
-  flex: 1; /* Take equal space */
-  background-color: #f4f4f4;
-  padding: 2rem;
-  box-sizing: border-box;
-
-  .tagline {
-    color: #ff8040;
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-`;
-
-const ProductFeatures = styled.div`
+const Features = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 1.5rem;
 
-  & > div {
-    flex: 1 1 calc(50% - 1rem);
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 `;
 
 const Feature = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
 
   img {
@@ -121,7 +131,7 @@ const Feature = styled.div`
 
   h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: #fff; /* White text on black background */
     margin: 0;
   }
 `;
@@ -136,25 +146,10 @@ const ShopNowButton = styled.button`
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     background-color: #e67336;
-  }
-`;
-
-const ImageContainer = styled.div`
-  flex: 1; /* Take equal space */
-  display: flex;
-  justify-content: flex-end; /* Aligns the image to the right */
-  align-items: center; /* Centers the image vertically */
-  padding-left: 2rem; /* Adds space between the content and image */
-  box-sizing: border-box;
-
-  img {
-    width: 100%;
-    height: auto;
-    max-width: 500px; /* Limit image width if needed */
-    border-radius: 8px;
-    object-fit: cover; /* Ensures the image covers its container proportionally */
+    transform: scale(1.05);
   }
 `;

@@ -1,5 +1,4 @@
 // Import necessary modules
-import { useState } from "react";
 import Restwell from "./Rest Well/Restwell";
 import Getbettersleep from "./Get Better Sleep/Getbettersleep";
 import Betterseller from "./Best Seller/Bestseller";
@@ -8,9 +7,9 @@ import Betterseller from "./Best Seller/Bestseller";
 const MainPage = () => {
   return (
     <>
-    <Restwell/>
-    <Getbettersleep/>
-    <Betterseller/>
+      <Restwell />
+      <Getbettersleep />
+      <Betterseller />
     </>
   );
 };
