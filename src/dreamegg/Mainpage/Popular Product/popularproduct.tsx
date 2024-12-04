@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Popularproduct = () => {
+const PopularProduct = () => {
   return (
     <Container>
       <SectionTitle>
@@ -10,7 +10,10 @@ const Popularproduct = () => {
         {/* First Product */}
         <ProductCard>
           <ImageWrapper>
-            <img src="" alt="Sunrise 1" />
+            <img
+              src="https://dreamegg.com/cdn/shop/files/86c5f8dbb4427055ef085c2a748a6ef2.jpg?v=1725950458"
+              alt="Sunrise 1"
+            />
           </ImageWrapper>
           <ProductDetails>
             <ProductTitle>
@@ -21,7 +24,9 @@ const Popularproduct = () => {
               <li>Alarm Clock</li>
               <li>Nine Night Light</li>
               <li>24 HiFi & Non-Looping Sounds</li>
-              <li>29 Soothing Sounds, White Noises, Natural Sounds, And Lullabies</li>
+              <li>
+                29 Soothing Sounds, White Noises, Natural Sounds, And Lullabies
+              </li>
             </FeatureList>
             <PriceTag>$89.99</PriceTag>
             <ShopButton>
@@ -31,7 +36,13 @@ const Popularproduct = () => {
         </ProductCard>
 
         {/* Second Product */}
-        <ProductCard>
+        <ProductCard reverse>
+          <ImageWrapper>
+            <img
+              src="https://dreamegg.com/cdn/shop/files/86c5f8dbb4427055ef085c2a748a6ef2_9c90c14b-9b56-4e1a-b702-598a29384994.jpg?v=1725950814"
+              alt="Sleep Lite 1"
+            />
+          </ImageWrapper>
           <ProductDetails>
             <ProductTitle>
               <h1>Sleep Lite 1</h1>
@@ -47,30 +58,27 @@ const Popularproduct = () => {
               <a href="#">Shop Now</a>
             </ShopButton>
           </ProductDetails>
-          <ImageWrapper>
-            <img src="" alt="Sleep Lite 1" />
-          </ImageWrapper>
         </ProductCard>
       </ProductWrapper>
     </Container>
   );
 };
 
-export default Popularproduct;
+export default PopularProduct;
 
 // Styled Components
 const Container = styled.div`
   width: 100%;
   padding: 2rem;
-  background-color: #f8f8f8;
+  background-color: #fff;
 `;
 
 const SectionTitle = styled.div`
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: #333;
   }
@@ -79,26 +87,25 @@ const SectionTitle = styled.div`
 const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2rem; /* Adjusted the gap */
 
   @media (min-width: 768px) {
-    flex-direction: column; /* Allows stacking of products */
+    gap: 3rem; /* Adjusted for larger screens */
   }
 `;
 
-const ProductCard = styled.div`
+const ProductCard = styled.div<{ reverse?: boolean }>`
   display: flex;
-  gap: 1.5rem;
+  flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
   align-items: center;
-  padding: 1.5rem;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 1rem; /* Reduced the gap between text and image */
 
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 1rem; /* Slightly larger gap for smaller screens */
   }
 `;
+
 
 const ImageWrapper = styled.div`
   flex: 1;
@@ -107,22 +114,27 @@ const ImageWrapper = styled.div`
 
   img {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     height: auto;
-    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
   }
 `;
 
 const ProductDetails = styled.div`
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const ProductTitle = styled.div`
+  text-align: center;
+
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #000;
     margin: 0;
@@ -134,24 +146,33 @@ const Underline = styled.div`
   width: 80px;
   height: 3px;
   background-color: #ff8040;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 1rem 0;
   border-radius: 3px;
 `;
 
 const FeatureList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 1rem 0;
+  margin: 0;
 
   li {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "✔";
+      font-size: 0.8rem;
+      color: #ff8040;
+      margin-right: 0.5rem;
+    }
   }
 `;
 
 const PriceTag = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
   margin: 1rem 0;
@@ -162,13 +183,13 @@ const ShopButton = styled.div`
 
   a {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 10px 20px;
     background-color: #ff8040;
     color: #fff;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 25px;
     transition: background-color 0.3s ease;
 
     &:hover {
