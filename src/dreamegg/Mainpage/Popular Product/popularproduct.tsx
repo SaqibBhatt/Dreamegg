@@ -15,7 +15,7 @@ const PopularProduct = () => {
               alt="Sunrise 1"
             />
           </ImageWrapper>
-          <ProductDetails>
+          <FirstProductDetails>
             <ProductTitle>
               <h1>Sunrise 1</h1>
               <Underline />
@@ -34,7 +34,7 @@ const PopularProduct = () => {
                 </ShopButton>
               </ShopButtonWrapper>
             </PriceContainer>
-          </ProductDetails>
+          </FirstProductDetails>
         </ProductCard>
 
         {/* Second Product - Image on the left, text centered */}
@@ -45,7 +45,7 @@ const PopularProduct = () => {
               alt="Sleep Lite 1"
             />
           </ImageWrapper>
-          <ProductDetails>
+          <SecondProductDetails>
             <ProductTitle>
               <h1>Sleep Lite 1</h1>
               <Underline />
@@ -63,7 +63,7 @@ const PopularProduct = () => {
                 </ShopButton>
               </ShopButtonWrapper>
             </PriceContainer>
-          </ProductDetails>
+          </SecondProductDetails>
         </ProductCard>
       </ProductWrapper>
     </Container>
@@ -127,7 +127,21 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const ProductDetails = styled.div`
+const FirstProductDetails = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align text to the left */
+  text-align: left;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+const SecondProductDetails = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
