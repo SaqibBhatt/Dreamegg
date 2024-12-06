@@ -8,7 +8,7 @@ const PopularProduct = () => {
       </SectionTitle>
       <ProductWrapper>
         {/* First Product - Image on the right, text centered */}
-        <ProductCard>
+        <FirstProductCard>
           <ImageWrapper>
             <img
               src="https://dreamegg.com/cdn/shop/files/86c5f8dbb4427055ef085c2a748a6ef2.jpg?v=1725950458"
@@ -35,16 +35,10 @@ const PopularProduct = () => {
               </ShopButtonWrapper>
             </PriceContainer>
           </FirstProductDetails>
-        </ProductCard>
+        </FirstProductCard>
 
         {/* Second Product - Image on the left, text centered */}
-        <ProductCard reverse>
-          <ImageWrapper>
-            <img
-              src="https://dreamegg.com/cdn/shop/files/86c5f8dbb4427055ef085c2a748a6ef2_9c90c14b-9b56-4e1a-b702-598a29384994.jpg?v=1725950814"
-              alt="Sleep Lite 1"
-            />
-          </ImageWrapper>
+        <SecondProductCard>
           <SecondProductDetails>
             <ProductTitle>
               <h1>Sleep Lite 1</h1>
@@ -64,7 +58,13 @@ const PopularProduct = () => {
               </ShopButtonWrapper>
             </PriceContainer>
           </SecondProductDetails>
-        </ProductCard>
+          <ImageWrapper>
+            <img
+              src="https://dreamegg.com/cdn/shop/files/86c5f8dbb4427055ef085c2a748a6ef2_9c90c14b-9b56-4e1a-b702-598a29384994.jpg?v=1725950814"
+              alt="Sleep Lite 1"
+            />
+          </ImageWrapper>
+        </SecondProductCard>
       </ProductWrapper>
     </Container>
   );
@@ -96,22 +96,36 @@ const ProductWrapper = styled.div`
   gap: 1rem; /* Adjust gap between product cards */
 `;
 
-const ProductCard = styled.div<{ reverse?: boolean }>`
+const FirstProductCard = styled.div`
   display: flex;
-  flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
   align-items: center;
-  justify-content: center; /* Center content */
-  gap: 1rem; /* Reduced gap between image and text */
+  justify-content: center;
+  gap: 0.5rem; /* Reduced gap between image and text */
   width: 100%;
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
   }
 `;
 
-// Updated ImageWrapper styled component
+const SecondProductCard = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Reduced gap between image and text */
+  width: 100%;
+  padding-left: 8rem;
+  padding-right: 8rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+`;
+
 const ImageWrapper = styled.div`
   flex: 1;
   display: flex;
@@ -152,6 +166,7 @@ const SecondProductDetails = styled.div`
   @media (max-width: 768px) {
     align-items: center;
     text-align: center;
+    padding-left: 0; /* Remove padding for smaller screens */
   }
 `;
 
