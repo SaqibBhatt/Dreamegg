@@ -9,6 +9,7 @@ import Reviews from "./Reviews/reviews";
 import Instagram from "./Instagram/instagram";
 import SubscriptionLetter from "./Subscription Letter/subscriptionletter";
 import UserAdvantage from "./UseAdvg/useradvg";
+import Footer from "./Footer/footer";
 
 // MainPage component
 const MainPage = () => {
@@ -24,6 +25,7 @@ const MainPage = () => {
       <Instagram/>
       <SubscriptionLetter/>
       <UserAdvantage/>
+      <Footer/>
     </>
   );
 };
