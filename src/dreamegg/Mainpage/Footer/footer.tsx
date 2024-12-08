@@ -21,7 +21,7 @@ const options = [
         ),
     },
     {
-        value: "EUR",
+        value: "CAD",
         label: (
             <>
                 <img
